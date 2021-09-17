@@ -7,28 +7,35 @@ var output=document.querySelector("#answer");
 outputBtn.addEventListener("click", resultHandler)
 
 function resultHandler(){
-    var stocks = shares.value;
-    var cost = price.value;
-    var curCost = currentPrice.value;
+    var stocks = Number(shares.value);
+    var cost = Number(price.value);
+    var curCost = Number(currentPrice.value);
+    if(stocks<1 || cost<1 || curCost<1){
+        output.innerText = "Please enter positive values or more than 0 only"
+    }
+    else{
     var oldProduct = stocks*cost;
     var newProduct = stocks*curCost;
     console.log("Stocks "+stocks+" Cost "+cost+" CurrentCost "+curCost)
     if(oldProduct<newProduct){
         var diff = newProduct-oldProduct;
         var profitPer = (diff/cost)*100;
+        profitPer = profitPer.toFixed(2);
         console.log("Profit ", diff , profitPer);
-        output.innerText = "You are smart";
+        output.innerText = "You're in PROFIT with Rs."+diff+" which is "+profitPer+"% 🎉🎆🎊";
     }
     else if (oldProduct>newProduct){
         var lossDiff = oldProduct-newProduct;
         var lossPer = (lossDiff/cost)*100;
         console.log("Loss ", lossDiff , lossPer);
-        output.innerText = "Not so smart";
+        lossPer = lossPer.toFixed(2);
+        output.innerText = "Sorry, you're in loss with Rs."+lossDiff+" which is "+lossPer+"% 😴";
     }
     else{
         console.log("No pain, no gain and no gain, no pain")
     }
 
+}
 }
 
  
