@@ -7,11 +7,13 @@ var output=document.querySelector("#answer");
 outputBtn.addEventListener("click", resultHandler)
 
 function resultHandler(){
-    var stocks = Number(shares.value);
+    
+        var stocks = Number(shares.value);
     var cost = Number(price.value);
     var curCost = Number(currentPrice.value);
+    
     if(stocks<1 || cost<1 || curCost<1){
-        output.innerText = "Please enter positive values or more than 0 only"
+        output.innerText = "Please enter all the fields with more than 0 value"
     }
     else{
     var oldProduct = stocks*cost;
@@ -32,10 +34,12 @@ function resultHandler(){
         output.innerText = "Sorry, you're in loss with Rs."+lossDiff+" which is "+lossPer+"% 😴";
     }
     else{
-        console.log("No pain, no gain and no gain, no pain")
+        output.innerText = "No pain, no gain and no gain, no pain";
     }
 
 }
 }
+
+
 
  
